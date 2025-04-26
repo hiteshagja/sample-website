@@ -8,7 +8,7 @@ import blogPosts from '@/data/blog-posts.json';
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen pt-20 bg-[#0a0a0a] text-white">
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-b from-[#0a0a0a] to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -57,9 +57,9 @@ const teamMembers = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen pt-20 bg-[#0a0a0a] text-white">
       {/* Hero Section */}
-      <section className="relative pt-40 pb-24 bg-gradient-to-b from-[#0a0a0a] to-black">
+      <section className="relative py-24 bg-gradient-to-b from-[#0a0a0a] to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
@@ -68,8 +68,79 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              We are a team of passionate AI experts dedicated to transforming businesses through innovative technology solutions.
+              We are a team of AI experts dedicated to helping businesses harness the power of artificial intelligence.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission Section */}
+      <section className="py-24 bg-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+                <span className="bg-gradient-to-r from-[#ff6700] to-white bg-clip-text text-transparent">
+                  Our Mission
+                </span>
+              </h2>
+              <p className="text-xl text-gray-300 mb-6">
+                To democratize AI technology and make it accessible to businesses of all sizes, helping them stay competitive in the digital age.
+              </p>
+              <p className="text-lg text-gray-400">
+                We believe in the transformative power of AI and are committed to helping our clients leverage this technology to drive innovation and growth.
+              </p>
+            </div>
+            <div className="relative h-[400px] rounded-2xl overflow-hidden">
+              <Image
+                src="/about/mission.jpg"
+                alt="Our Mission"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-60" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="py-24 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16">
+            <span className="bg-gradient-to-r from-[#ff6700] to-white bg-clip-text text-transparent">
+              Our Values
+            </span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 hover:border-[#ff6700]/50 transition-all duration-300">
+              <div className="h-16 w-16 rounded-full bg-[#ff6700]/10 flex items-center justify-center mb-6">
+                <FaUsers className="h-8 w-8 text-[#ff6700]" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-4">Collaboration</h3>
+              <p className="text-gray-400">We work closely with our clients to understand their needs and deliver tailored solutions.</p>
+            </div>
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 hover:border-[#ff6700]/50 transition-all duration-300">
+              <div className="h-16 w-16 rounded-full bg-[#ff6700]/10 flex items-center justify-center mb-6">
+                <FaLightbulb className="h-8 w-8 text-[#ff6700]" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-4">Innovation</h3>
+              <p className="text-gray-400">We constantly push the boundaries of what's possible with AI technology.</p>
+            </div>
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 hover:border-[#ff6700]/50 transition-all duration-300">
+              <div className="h-16 w-16 rounded-full bg-[#ff6700]/10 flex items-center justify-center mb-6">
+                <FaRocket className="h-8 w-8 text-[#ff6700]" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-4">Excellence</h3>
+              <p className="text-gray-400">We strive for excellence in everything we do, from code quality to customer service.</p>
+            </div>
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 hover:border-[#ff6700]/50 transition-all duration-300">
+              <div className="h-16 w-16 rounded-full bg-[#ff6700]/10 flex items-center justify-center mb-6">
+                <FaChartLine className="h-8 w-8 text-[#ff6700]" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-4">Growth</h3>
+              <p className="text-gray-400">We help our clients grow by providing scalable and future-proof AI solutions.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -103,29 +174,6 @@ export default function AboutPage() {
                 className="object-cover"
               />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-white text-center mb-16">
-            Our Values
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div
-                key={index}
-                className="bg-[#1a1a1a] p-8 rounded-xl border border-gray-800 hover:border-[#ff6700] transition-all duration-300"
-              >
-                <value.icon className="h-12 w-12 text-[#ff6700] mb-6" />
-                <h3 className="text-2xl font-semibold text-white mb-4">
-                  {value.title}
-                </h3>
-                <p className="text-gray-400">{value.description}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
