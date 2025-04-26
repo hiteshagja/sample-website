@@ -34,6 +34,9 @@ Before responding to any request, follow these steps:
 - Follow DRY (Don't Repeat Yourself) principle
 - Implement early returns for better readability
 - Structure components logically: exports, subcomponents, helpers, types
+- Each page title should have consistent gradient style
+- Each page header and footer should be gradient consistent
+- Service, Case study and Blog detail page should be slug based
 
 ### Naming Conventions
 
@@ -41,6 +44,18 @@ Before responding to any request, follow these steps:
 - Prefix event handlers with "handle" (handleClick, handleSubmit)
 - Use lowercase with dashes for directories (components/auth-wizard)
 - Favor named exports for components
+
+### Color codes to be used
+- Dark theme
+- #ff6700
+- #ebebeb
+- #c0c0c0
+- #3a6ea5
+- #004e98
+- Shades of White
+- Shades of Black
+- Shades of Grey
+- Gradient effect left to right in headings and button and in sections if its relevant
 
 ## React 19 and Next.js 15 Best Practices
 
