@@ -97,3 +97,146 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Geometric Shape Clips */
+.clip-pentagon {
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+.clip-triangle {
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+/* Shape Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.animate-float {
+  animation: float 10s ease-in-out infinite;
+}
+
+/* Add subtle hover effect to shapes */
+.geometric-shape {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.geometric-shape:hover {
+  opacity: 0.05;
+}
+
+/* Neural Network Animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes pulse-delayed {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.15); }
+}
+
+@keyframes float-slow {
+  0% {
+    transform: translateY(0) translateX(0);
+    filter: brightness(1) blur(var(--blur-size));
+  }
+  25% {
+    transform: translateY(-15px) translateX(10px);
+    filter: brightness(1.3) blur(calc(var(--blur-size) * 1.1));
+  }
+  50% {
+    transform: translateY(0) translateX(20px);
+    filter: brightness(1) blur(var(--blur-size));
+  }
+  75% {
+    transform: translateY(15px) translateX(10px);
+    filter: brightness(1.3) blur(calc(var(--blur-size) * 1.1));
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+    filter: brightness(1) blur(var(--blur-size));
+  }
+}
+
+@keyframes float-delayed {
+  0% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(10px) translateX(-5px); }
+  50% { transform: translateY(0) translateX(-10px); }
+  75% { transform: translateY(-10px) translateX(-5px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-pulse-delayed {
+  animation: pulse-delayed 3s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-slow 8s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+/* Neural Network Paths */
+.neural-path {
+  stroke-dasharray: 1000;
+  animation: line-flow 8s linear infinite;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.neural-network {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Neural Network Line Animations */
+@keyframes line-flow {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.2;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: brightness(1) blur(var(--blur-size));
+  }
+  50% {
+    filter: brightness(1.5) blur(calc(var(--blur-size) * 1.2));
+  }
+}
+
+/* Enhance node glow effect */
+.neural-network .rounded-full {
+  --blur-size: 40px;
+  animation: glow 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px currentColor);
+}
+
+/* Add shimmer effect to connections */
+.neural-network svg {
+  filter: drop-shadow(0 0 15px rgba(255, 103, 0, 0.3));
+}
