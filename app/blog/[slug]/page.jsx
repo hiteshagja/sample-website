@@ -7,19 +7,60 @@ import { Button } from '@/components/ui/button';
 import { FaCalendar, FaUser, FaTags, FaArrowLeft, FaShare, FaBookmark } from 'react-icons/fa';
 
 const blogPosts = {
-  'top-ai-trends-2024': {
+  'ai-trends-2024': {
     title: 'Top AI Trends to Watch in 2024',
     content: `
       <p class="lead">Artificial Intelligence continues to evolve at a rapid pace, transforming industries and reshaping the way we live and work. As we move through 2024, several key trends are emerging that will have significant implications for businesses and society.</p>
       
       <h2>1. Generative AI Maturation</h2>
       <p>Generative AI has moved beyond the hype phase and is now being integrated into practical business applications. Companies are finding innovative ways to leverage these tools for content creation, design, and problem-solving.</p>
+      <p>Key developments include:</p>
+      <ul>
+        <li>Improved accuracy and reliability of AI-generated content</li>
+        <li>Integration with existing business workflows</li>
+        <li>Customization for specific industry needs</li>
+        <li>Enhanced ethical considerations and safeguards</li>
+      </ul>
       
       <h2>2. AI-Powered Automation</h2>
       <p>The automation landscape is being revolutionized by AI, with more sophisticated systems capable of handling complex tasks that previously required human intervention.</p>
+      <p>Notable advancements:</p>
+      <ul>
+        <li>Intelligent process automation (IPA) systems</li>
+        <li>Self-learning algorithms for continuous improvement</li>
+        <li>Integration with IoT devices</li>
+        <li>Predictive maintenance capabilities</li>
+      </ul>
       
       <h2>3. Ethical AI Development</h2>
       <p>As AI becomes more prevalent, there's an increasing focus on developing ethical frameworks and responsible AI practices to ensure technology serves humanity's best interests.</p>
+      <p>Key considerations include:</p>
+      <ul>
+        <li>Transparency in AI decision-making</li>
+        <li>Bias detection and mitigation</li>
+        <li>Privacy protection</li>
+        <li>Accountability mechanisms</li>
+      </ul>
+      
+      <h2>4. Edge AI Computing</h2>
+      <p>Edge AI is bringing intelligence closer to where data is generated, enabling real-time processing and decision-making without constant cloud connectivity.</p>
+      <p>Benefits include:</p>
+      <ul>
+        <li>Reduced latency</li>
+        <li>Enhanced privacy</li>
+        <li>Lower bandwidth requirements</li>
+        <li>Improved reliability</li>
+      </ul>
+      
+      <h2>5. AI in Healthcare</h2>
+      <p>The healthcare industry is experiencing a transformation through AI applications, from diagnostics to personalized treatment plans.</p>
+      <p>Key applications:</p>
+      <ul>
+        <li>Medical image analysis</li>
+        <li>Drug discovery and development</li>
+        <li>Patient monitoring systems</li>
+        <li>Predictive analytics for disease prevention</li>
+      </ul>
     `,
     image: '/blog/ai-trends.jpg',
     author: 'John Doe',
@@ -35,32 +76,143 @@ const blogPosts = {
       'Gain competitive advantage'
     ]
   },
-  'future-of-web-development': {
-    title: 'The Future of Web Development in 2024',
+  'machine-learning-business': {
+    title: 'Machine Learning in Business: A Practical Guide',
     content: `
-      <p class="lead">Web development continues to evolve at a breakneck pace, with new technologies and frameworks emerging to meet the demands of modern web applications.</p>
+      <p class="lead">Machine Learning is transforming how businesses operate, offering unprecedented opportunities for growth and efficiency. This guide explores practical applications and implementation strategies.</p>
       
-      <h2>1. Server Components Revolution</h2>
-      <p>Server Components are changing how we think about web development, offering better performance and reduced client-side JavaScript.</p>
+      <h2>1. Understanding Machine Learning Basics</h2>
+      <p>Machine Learning is a subset of AI that enables systems to learn from data and improve over time without explicit programming.</p>
+      <p>Key concepts include:</p>
+      <ul>
+        <li>Supervised vs. Unsupervised Learning</li>
+        <li>Neural Networks and Deep Learning</li>
+        <li>Feature Engineering</li>
+        <li>Model Evaluation</li>
+      </ul>
       
-      <h2>2. Edge Computing</h2>
-      <p>Edge computing is bringing computation closer to users, reducing latency and improving performance for global applications.</p>
+      <h2>2. Business Applications</h2>
+      <p>Machine Learning can be applied across various business functions to drive value and efficiency.</p>
+      <p>Common applications include:</p>
+      <ul>
+        <li>Customer segmentation and targeting</li>
+        <li>Predictive analytics for sales forecasting</li>
+        <li>Fraud detection and prevention</li>
+        <li>Supply chain optimization</li>
+        <li>Quality control and maintenance</li>
+      </ul>
       
-      <h2>3. WebAssembly</h2>
-      <p>WebAssembly continues to gain traction, enabling high-performance applications to run in the browser.</p>
+      <h2>3. Implementation Strategy</h2>
+      <p>Successful ML implementation requires careful planning and execution.</p>
+      <p>Key steps include:</p>
+      <ul>
+        <li>Data collection and preparation</li>
+        <li>Model selection and training</li>
+        <li>Integration with existing systems</li>
+        <li>Performance monitoring and optimization</li>
+      </ul>
+      
+      <h2>4. Challenges and Solutions</h2>
+      <p>While ML offers significant benefits, implementation comes with challenges.</p>
+      <p>Common challenges and solutions:</p>
+      <ul>
+        <li>Data quality and availability</li>
+        <li>Model interpretability</li>
+        <li>Scalability concerns</li>
+        <li>Resource requirements</li>
+      </ul>
+      
+      <h2>5. Future Outlook</h2>
+      <p>The future of ML in business looks promising, with continuous advancements and new applications emerging.</p>
+      <p>Key trends to watch:</p>
+      <ul>
+        <li>Automated Machine Learning (AutoML)</li>
+        <li>Edge computing integration</li>
+        <li>Explainable AI</li>
+        <li>Federated learning</li>
+      </ul>
     `,
-    image: '/blog/web-dev.jpg',
+    image: '/blog/ml-business.jpg',
     author: 'Jane Smith',
     date: '2024-03-10',
-    tags: ['Web Development', 'Technology', 'Programming'],
-    readTime: '4 min read',
+    tags: ['Machine Learning', 'Business', 'AI'],
+    readTime: '7 min read',
     benefits: [
-      'Learn about cutting-edge technologies',
-      'Improve application performance',
-      'Reduce development complexity',
-      'Enhance user experience',
-      'Stay competitive in the market',
-      'Future-proof your skills'
+      'Understand ML fundamentals',
+      'Identify business applications',
+      'Learn implementation strategies',
+      'Overcome common challenges',
+      'Prepare for future developments',
+      'Make informed decisions'
+    ]
+  },
+  'ai-ethics': {
+    title: 'The Ethics of AI: Balancing Innovation and Responsibility',
+    content: `
+      <p class="lead">As AI systems become more powerful and pervasive, ethical considerations are increasingly important. This article explores the key ethical challenges and frameworks for responsible AI development.</p>
+      
+      <h2>1. Understanding AI Ethics</h2>
+      <p>AI ethics involves ensuring that artificial intelligence systems are developed and used in ways that are fair, transparent, and beneficial to society.</p>
+      <p>Core principles include:</p>
+      <ul>
+        <li>Fairness and non-discrimination</li>
+        <li>Transparency and explainability</li>
+        <li>Privacy and data protection</li>
+        <li>Accountability and responsibility</li>
+      </ul>
+      
+      <h2>2. Bias in AI Systems</h2>
+      <p>AI systems can inherit and amplify biases present in training data or development processes.</p>
+      <p>Key considerations:</p>
+      <ul>
+        <li>Data collection and preprocessing</li>
+        <li>Algorithm design and testing</li>
+        <li>Diverse development teams</li>
+        <li>Continuous monitoring</li>
+      </ul>
+      
+      <h2>3. Privacy Concerns</h2>
+      <p>AI systems often require large amounts of data, raising important privacy considerations.</p>
+      <p>Important aspects include:</p>
+      <ul>
+        <li>Data minimization</li>
+        <li>Consent and control</li>
+        <li>Secure data handling</li>
+        <li>Compliance with regulations</li>
+      </ul>
+      
+      <h2>4. Accountability Frameworks</h2>
+      <p>Establishing clear accountability is crucial for responsible AI development and deployment.</p>
+      <p>Key elements:</p>
+      <ul>
+        <li>Clear governance structures</li>
+        <li>Documentation and auditing</li>
+        <li>Incident response plans</li>
+        <li>Stakeholder engagement</li>
+      </ul>
+      
+      <h2>5. Future Directions</h2>
+      <p>The field of AI ethics is evolving rapidly, with new challenges and solutions emerging.</p>
+      <p>Areas of focus:</p>
+      <ul>
+        <li>International standards and regulations</li>
+        <li>Ethical AI certification</li>
+        <li>Public education and awareness</li>
+        <li>Cross-disciplinary collaboration</li>
+      </ul>
+    `,
+    image: '/blog/ai-ethics.jpg',
+    author: 'Alex Johnson',
+    date: '2024-03-05',
+    tags: ['AI Ethics', 'Responsibility', 'Technology'],
+    readTime: '6 min read',
+    benefits: [
+      'Understand ethical principles',
+      'Identify potential biases',
+      'Protect user privacy',
+      'Establish accountability',
+      'Navigate regulations',
+      'Promote responsible AI'
     ]
   }
 };
@@ -199,32 +351,6 @@ export default function BlogPostPage() {
               }
             `}</style>
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-24 bg-[#0a0a0a]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16">
-            <span className="bg-gradient-to-r from-[#ff6700] to-white bg-clip-text text-transparent">
-              Key Takeaways
-            </span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {post.benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className="p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 hover:border-[#ff6700]/50 transition-all duration-300"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="h-10 w-10 rounded-full bg-[#ff6700]/10 flex items-center justify-center">
-                    <span className="text-[#ff6700] font-bold">{index + 1}</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-white">{benefit}</h3>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
