@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Button } from '@/components/ui/button';
 import MobileMenu from './mobile-menu';
 
 const navigation = [
@@ -15,7 +14,7 @@ const navigation = [
   { name: 'Contact', href: '/contact' },
 ];
 
-function HeaderContent({ isScrolled, pathname, isMobileMenuOpen, setIsMobileMenuOpen }) {
+function HeaderContent({ currentPath, isScrolled, isMobileMenuOpen, setIsMobileMenuOpen }) {
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
@@ -35,25 +34,29 @@ function HeaderContent({ isScrolled, pathname, isMobileMenuOpen, setIsMobileMenu
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`text-sm font-medium transition-colors ${
-                  pathname === item.href
-                    ? 'text-[#ff6700]'
-                    : 'text-gray-300 hover:text-white'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <Button
-              variant="outline"
-              className="ml-4 bg-transparent border-[#ff6700] text-[#ff6700] hover:bg-[#ff6700] hover:text-white"
+            {navigation.map((item) => {
+              const isActive = currentPath.startsWith(item.href) && 
+                (item.href === '/' ? currentPath === '/' : true);
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`text-sm font-medium transition-colors ${
+                    isActive
+                      ? 'text-[#ff6700]'
+                      : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
+            <Link
+              href="/contact"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#ff6700] hover:bg-[#ff6700]/90 transition-colors"
             >
-              Schedule Demo
-            </Button>
+              Free Consultation
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -87,7 +90,7 @@ function HeaderContent({ isScrolled, pathname, isMobileMenuOpen, setIsMobileMenu
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
         navigation={navigation}
-        currentPath={pathname}
+        currentPath={currentPath}
       />
     </header>
   );
@@ -98,11 +101,6 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Initialize scroll state on mount
-  useEffect(() => {
-    setIsScrolled(window.scrollY > 0);
-  }, []);
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
@@ -112,18 +110,10 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [isMobileMenuOpen]);
-
   return (
     <HeaderContent
+      currentPath={pathname}
       isScrolled={isScrolled}
-      pathname={pathname}
       isMobileMenuOpen={isMobileMenuOpen}
       setIsMobileMenuOpen={setIsMobileMenuOpen}
     />

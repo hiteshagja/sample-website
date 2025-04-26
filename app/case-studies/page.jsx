@@ -196,19 +196,23 @@ export default function CaseStudiesPage() {
             Schedule a consultation with our team to discuss how we can help you implement similar solutions for your organization.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              className="bg-black text-white hover:bg-gray-900 transition-colors"
-              size="lg"
-            >
-              Schedule Consultation
-            </Button>
-            <Button
-              variant="outline"
-              className="border-black text-black hover:bg-black/10"
-              size="lg"
-            >
-              Contact Sales
-            </Button>
+            <Link href="/contact">
+              <Button
+                className="bg-black text-white hover:bg-gray-900 transition-colors cursor-pointer"
+                size="lg"
+              >
+                Inquire Now
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button
+                variant="outline"
+                className="border-black text-black hover:bg-black/10 cursor-pointer"
+                size="lg"
+              >
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

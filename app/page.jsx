@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { FaQuoteLeft, FaStar } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
 
 const services = [
   {
@@ -62,9 +63,57 @@ const testimonials = [
     content: 'The custom AI solutions delivered exceptional results. Their team\'s understanding of business needs and technical expertise is impressive.',
     rating: 5,
   },
+  {
+    name: 'David Kim',
+    role: 'CEO, FutureTech',
+    content: 'The implementation of their AI solutions helped us achieve a 40% increase in operational efficiency. Truly transformative!',
+    rating: 5,
+  },
+  {
+    name: 'Lisa Wang',
+    role: 'Head of Innovation, TechStart',
+    content: 'Their RAG implementation revolutionized our knowledge management system. The results exceeded our expectations.',
+    rating: 5,
+  },
+  {
+    name: 'James Wilson',
+    role: 'CTO, DigitalFirst',
+    content: 'The multi-cloud AI platform they built for us is both scalable and cost-effective. A perfect solution for our growing needs.',
+    rating: 5,
+  },
+  {
+    name: 'Maria Garcia',
+    role: 'Director of Technology, GlobalCorp',
+    content: 'Their team\'s expertise in LLM integration helped us automate complex processes, saving us thousands of hours annually.',
+    rating: 5,
+  },
+  {
+    name: 'Robert Smith',
+    role: 'Head of AI, TechInnovate',
+    content: 'The AI solutions they delivered have given us a significant competitive advantage in our market. Highly recommended!',
+    rating: 5,
+  },
 ];
 
 export default function HomePage() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handlePrev = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const handleNext = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -94,19 +143,14 @@ export default function HomePage() {
                 Leverage cutting-edge AI technologies including LLM, RAG, and MCP to drive innovation, efficiency, and growth across your organization.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  className="bg-gradient-to-r from-[#ff6700] to-white text-black hover:opacity-90 transition-opacity"
-                  size="lg"
-                >
-                  Get Started
-                </Button>
-                <Button
-                  variant="outline"
-                  className="border-white text-white hover:bg-white/10"
-                  size="lg"
-                >
-                  Learn More
-                </Button>
+                <Link href="/contact">
+                  <Button
+                    className="bg-gradient-to-r from-[#ff6700] to-white text-black hover:opacity-90 transition-opacity"
+                    size="lg"
+                  >
+                    Free Consultation
+                  </Button>
+                </Link>
               </div>
             </div>
 
@@ -129,17 +173,32 @@ export default function HomePage() {
       {/* Services Section */}
       <section className="py-24 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-3xl font-bold">
               <span className="bg-gradient-to-r from-[#ff6700] to-white bg-clip-text text-transparent">
                 Our AI Services
               </span>
             </h2>
-            <p className="mt-4 text-xl text-gray-300">
-              Comprehensive AI solutions tailored to your business needs
-            </p>
+            <Link
+              href="/services"
+              className="text-[#ff6700] hover:text-white transition-colors flex items-center"
+            >
+              View All Services
+              <svg
+                className="w-4 h-4 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </Link>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div
@@ -158,17 +217,32 @@ export default function HomePage() {
       {/* Case Studies Section */}
       <section className="py-24 bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-3xl font-bold">
               <span className="bg-gradient-to-r from-[#ff6700] to-white bg-clip-text text-transparent">
                 Case Studies
               </span>
             </h2>
-            <p className="mt-4 text-xl text-gray-300">
-              Real-world applications of our AI solutions
-            </p>
+            <Link
+              href="/case-studies"
+              className="text-[#ff6700] hover:text-white transition-colors flex items-center"
+            >
+              View All Case Studies
+              <svg
+                className="w-4 h-4 ml-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </Link>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {caseStudies.map((study, index) => (
               <div
@@ -211,29 +285,80 @@ export default function HomePage() {
               </span>
             </h2>
             <p className="mt-4 text-xl text-gray-300">
-              What our clients say about our AI solutions
+              Hear what our clients have to say about our AI solutions
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+          <div className="relative">
+            <div className="overflow-hidden">
               <div
-                key={index}
-                className="relative p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 hover:border-[#ff6700]/50 transition-colors duration-300"
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
               >
-                <FaQuoteLeft className="text-[#ff6700] text-4xl mb-4" />
-                <p className="text-gray-300 mb-6">{testimonial.content}</p>
-                <div className="flex items-center gap-2 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <FaStar key={i} className="text-[#ff6700]" />
-                  ))}
-                </div>
-                <div>
-                  <h4 className="text-white font-semibold">{testimonial.name}</h4>
-                  <p className="text-gray-400">{testimonial.role}</p>
-                </div>
+                {testimonials.map((testimonial, index) => (
+                  <div
+                    key={index}
+                    className="w-full flex-shrink-0 px-4"
+                  >
+                    <div className="bg-gray-900 rounded-2xl p-8">
+                      <div className="flex items-center mb-6">
+                        <div className="flex text-[#ff6700]">
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <FaStar key={i} className="w-5 h-5" />
+                          ))}
+                        </div>
+                      </div>
+                      <FaQuoteLeft className="text-[#ff6700] text-4xl mb-6" />
+                      <p className="text-xl text-gray-300 mb-6">{testimonial.content}</p>
+                      <div>
+                        <p className="text-white font-semibold">{testimonial.name}</p>
+                        <p className="text-gray-400">{testimonial.role}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={handlePrev}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-[#ff6700] text-white p-2 rounded-full hover:bg-[#ff6700]/90 transition-colors"
+              aria-label="Previous testimonial"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+            <button
+              onClick={handleNext}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-[#ff6700] text-white p-2 rounded-full hover:bg-[#ff6700]/90 transition-colors"
+              aria-label="Next testimonial"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </section>
@@ -248,19 +373,23 @@ export default function HomePage() {
             Join the growing number of businesses leveraging our AI solutions to drive innovation and growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              className="bg-black text-white hover:bg-gray-900 transition-colors"
-              size="lg"
-            >
-              Schedule a Demo
-            </Button>
-            <Button
-              variant="outline"
-              className="border-black text-black hover:bg-black/10"
-              size="lg"
-            >
-              Contact Us
-            </Button>
+            <Link href="/contact">
+              <Button
+                className="bg-black text-white hover:bg-gray-900 transition-colors"
+                size="lg"
+              >
+                Inquire Now
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button
+                variant="outline"
+                className="border-black text-black hover:bg-black/10"
+                size="lg"
+              >
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
