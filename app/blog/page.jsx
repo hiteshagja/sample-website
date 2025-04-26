@@ -112,25 +112,29 @@ export default function BlogPage() {
       <section className="py-24 bg-gradient-to-r from-[#ff6700] to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-black mb-6">
-            Want to Contribute to Our Blog?
+            Need Help with Similar Challenges?
           </h2>
           <p className="text-xl text-gray-800 mb-8 max-w-2xl mx-auto">
-            Share your insights and expertise in AI and machine learning with our community.
+            If you're facing similar challenges and looking for solutions, we're happy to help. Schedule a free 1-hour consultation with our experts.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              className="bg-black text-white hover:bg-gray-900 transition-colors"
-              size="lg"
-            >
-              Submit Article
-            </Button>
-            <Button
-              variant="outline"
-              className="border-black text-black hover:bg-black/10"
-              size="lg"
-            >
-              Contact Editor
-            </Button>
+            <Link href="/contact">
+              <Button
+                className="bg-black text-white hover:bg-gray-900 transition-colors cursor-pointer"
+                size="lg"
+              >
+                Schedule Free Consultation
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button
+                variant="outline"
+                className="border-black text-black hover:bg-black/10 cursor-pointer"
+                size="lg"
+              >
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

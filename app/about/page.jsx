@@ -3,6 +3,7 @@
 import { FaLightbulb, FaUsers, FaRocket, FaShieldAlt, FaBrain, FaChartLine } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const values = [
   {
@@ -58,16 +59,16 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a]" />
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24 bg-gradient-to-b from-[#0a0a0a] to-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 bg-gradient-to-r from-[#ff6700] to-[#ff8533] bg-clip-text text-transparent">
-              About Us
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-[#ff6700] to-white bg-clip-text text-transparent">
+                About Us
+              </span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
-              Pioneering the future of artificial intelligence through innovation, expertise, and a commitment to excellence.
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              We are a team of passionate AI experts dedicated to transforming businesses through innovative technology solutions.
             </p>
           </div>
         </div>
@@ -161,28 +162,32 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-gradient-to-r from-[#ff6700] to-[#ff8533]">
+      <section className="py-24 bg-gradient-to-r from-[#ff6700] to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-8">
-            Join Us in Shaping the Future of AI
+          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-6">
+            Ready to Get Started?
           </h2>
-          <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto">
-            Whether you're looking to implement AI solutions or join our team, we'd love to hear from you.
+          <p className="text-xl text-gray-800 mb-8 max-w-2xl mx-auto">
+            Contact our team to discuss how we can help you implement AI solutions for your organization.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Button
-              className="bg-white text-[#ff6700] hover:bg-white/90 text-lg px-8 py-6"
-              size="lg"
-            >
-              Contact Us
-            </Button>
-            <Button
-              variant="outline"
-              className="border-white text-white hover:bg-white/10 text-lg px-8 py-6"
-              size="lg"
-            >
-              View Careers
-            </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact">
+              <Button
+                className="bg-black text-white hover:bg-gray-900 transition-colors cursor-pointer"
+                size="lg"
+              >
+                Inquire Now
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button
+                variant="outline"
+                className="border-black text-black hover:bg-black/10 cursor-pointer"
+                size="lg"
+              >
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
