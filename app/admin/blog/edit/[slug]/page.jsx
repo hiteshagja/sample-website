@@ -6,8 +6,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { use } from 'react';
 
-export default function AddBlogPostPage() {
+export default function EditBlogPostPage({ params }) {
+  const resolvedParams = use(params);
   const [post, setPost] = useState({
     title: '',
     excerpt: '',
@@ -16,62 +18,79 @@ export default function AddBlogPostPage() {
     tags: '',
     image: '',
   });
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const router = useRouter();
 
   useEffect(() => {
-    // Check if user is authenticated
     const isAuthenticated = localStorage.getItem('adminAuthenticated') === 'true';
     if (!isAuthenticated) {
       router.push('/admin/login');
+      return;
     }
-  }, [router]);
+
+    const loadPost = async () => {
+      try {
+        const response = await fetch(`/api/blog-posts/${resolvedParams.slug}`);
+        if (!response.ok) throw new Error('Failed to load post');
+        const data = await response.json();
+        setPost({
+          ...data,
+          tags: data.tags.join(', '),
+        });
+      } catch (error) {
+        console.error('Error loading post:', error);
+        setError('Failed to load post');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadPost();
+  }, [resolvedParams.slug, router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    setIsLoading(true);
 
     try {
-      // Generate slug from title
-      const slug = post.title
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/(^-|-$)/g, '');
-
-      const response = await fetch('/api/blog-posts', {
-        method: 'POST',
+      const response = await fetch(`/api/blog-posts/${resolvedParams.slug}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           ...post,
-          slug,
           tags: post.tags.split(',').map(tag => tag.trim()),
-          date: new Date().toISOString().split('T')[0],
         }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to create post');
-      }
+      if (!response.ok) throw new Error('Failed to update post');
 
       router.push('/admin/blog');
     } catch (error) {
-      console.error('Error creating post:', error);
-      setError('Failed to create post. Please try again.');
-    } finally {
-      setIsLoading(false);
+      console.error('Error updating post:', error);
+      setError('Failed to update post');
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#ff6700] mx-auto"></div>
+          <p className="mt-4">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white p-8">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-8">
           <span className="bg-gradient-to-r from-[#ff6700] to-white bg-clip-text text-transparent">
-            Add New Blog Post
+            Edit Blog Post
           </span>
         </h1>
 
@@ -88,7 +107,6 @@ export default function AddBlogPostPage() {
               id="title"
               value={post.title}
               onChange={(e) => setPost({ ...post, title: e.target.value })}
-              placeholder="Enter a descriptive title for your blog post"
               className="mt-2 bg-gray-900 border-gray-800 text-white"
               required
             />
@@ -100,7 +118,6 @@ export default function AddBlogPostPage() {
               id="excerpt"
               value={post.excerpt}
               onChange={(e) => setPost({ ...post, excerpt: e.target.value })}
-              placeholder="Write a brief summary of your blog post"
               className="mt-2 bg-gray-900 border-gray-800 text-white"
               required
             />
@@ -112,7 +129,6 @@ export default function AddBlogPostPage() {
               id="content"
               value={post.content}
               onChange={(e) => setPost({ ...post, content: e.target.value })}
-              placeholder="Write your blog post content here"
               className="mt-2 bg-gray-900 border-gray-800 text-white min-h-[300px]"
               required
             />
@@ -124,7 +140,6 @@ export default function AddBlogPostPage() {
               id="author"
               value={post.author}
               onChange={(e) => setPost({ ...post, author: e.target.value })}
-              placeholder="Enter the author's name"
               className="mt-2 bg-gray-900 border-gray-800 text-white"
               required
             />
@@ -136,7 +151,6 @@ export default function AddBlogPostPage() {
               id="tags"
               value={post.tags}
               onChange={(e) => setPost({ ...post, tags: e.target.value })}
-              placeholder="Enter tags separated by commas (e.g., AI, Technology, Innovation)"
               className="mt-2 bg-gray-900 border-gray-800 text-white"
               required
             />
@@ -148,7 +162,6 @@ export default function AddBlogPostPage() {
               id="image"
               value={post.image}
               onChange={(e) => setPost({ ...post, image: e.target.value })}
-              placeholder="Enter the URL of the featured image"
               className="mt-2 bg-gray-900 border-gray-800 text-white"
               required
             />
@@ -158,9 +171,8 @@ export default function AddBlogPostPage() {
             <Button
               type="submit"
               className="bg-[#ff6700] hover:bg-[#ff8533]"
-              disabled={isLoading}
             >
-              {isLoading ? 'Creating...' : 'Create Post'}
+              Update Post
             </Button>
             <Button
               type="button"

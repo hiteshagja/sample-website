@@ -4,54 +4,22 @@ import { FaCalendar, FaUser, FaTags, FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-
-const blogPosts = [
-  {
-    slug: 'ai-trends-2024',
-    title: 'Top AI Trends to Watch in 2024',
-    excerpt: 'Explore the most significant AI trends that will shape the future of technology and business.',
-    image: '/blog/ai-trends.jpg',
-    author: 'John Doe',
-    date: '2024-03-15',
-    tags: ['AI Trends', 'Technology', 'Innovation'],
-    readTime: '5 min read',
-  },
-  {
-    slug: 'machine-learning-business',
-    title: 'Machine Learning in Business: A Practical Guide',
-    excerpt: 'Learn how businesses are leveraging machine learning to drive growth and efficiency.',
-    image: '/blog/ml-business.jpg',
-    author: 'Jane Smith',
-    date: '2024-03-10',
-    tags: ['Machine Learning', 'Business', 'AI'],
-    readTime: '7 min read',
-  },
-  {
-    slug: 'ai-ethics',
-    title: 'The Ethics of AI: Balancing Innovation and Responsibility',
-    excerpt: 'A deep dive into the ethical considerations surrounding AI development and deployment.',
-    image: '/blog/ai-ethics.jpg',
-    author: 'Alex Johnson',
-    date: '2024-03-05',
-    tags: ['AI Ethics', 'Responsibility', 'Technology'],
-    readTime: '6 min read',
-  },
-];
+import blogPosts from '@/data/blog-posts.json';
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-b from-[#0a0a0a] to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               <span className="bg-gradient-to-r from-[#ff6700] to-white bg-clip-text text-transparent">
-                AI Insights & Trends
+                Blog
               </span>
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Stay updated with the latest developments in artificial intelligence and machine learning.
+              Insights, trends, and updates from our team of AI experts.
             </p>
           </div>
         </div>
@@ -61,7 +29,7 @@ export default function BlogPage() {
       <section className="py-24 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
+            {blogPosts.posts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
