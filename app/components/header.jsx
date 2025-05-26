@@ -7,11 +7,11 @@ import MobileMenu from './mobile-menu';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Services', href: '/services' },
   { name: 'About', href: '/about' },
-  { name: 'Case Studies', href: '/case-studies' },
+  { name: 'Services', href: '/services', className: 'hidden' },
+  { name: 'Case Studies', href: '/case-studies', className: 'hidden' },
   { name: 'Blog', href: '/blog' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Contact', href: '/contact', className: 'hidden' },
 ];
 
 function HeaderContent({ currentPath, isScrolled, isMobileMenuOpen, setIsMobileMenuOpen }) {
@@ -41,7 +41,7 @@ function HeaderContent({ currentPath, isScrolled, isMobileMenuOpen, setIsMobileM
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`text-sm font-medium transition-colors ${
+                  className={`text-sm font-medium transition-colors ${item.className || ''} ${
                     isActive
                       ? 'text-[#ff6700]'
                       : 'text-gray-300 hover:text-white'

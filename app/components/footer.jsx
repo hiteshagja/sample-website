@@ -78,7 +78,7 @@ export default function Footer() {
                   Home
                 </Link>
               </li>
-              <li>
+              <li className="hidden">
                 <Link 
                   href="/services" 
                   className={`transition-colors ${
@@ -102,7 +102,7 @@ export default function Footer() {
                   About
                 </Link>
               </li>
-              <li>
+              <li className="hidden">
                 <Link 
                   href="/case-studies" 
                   className={`transition-colors ${
@@ -126,7 +126,7 @@ export default function Footer() {
                   Blog
                 </Link>
               </li>
-              <li>
+              <li className="hidden">
                 <Link 
                   href="/contact" 
                   className={`transition-colors ${
