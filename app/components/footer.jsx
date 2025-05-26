@@ -66,7 +66,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-semibold text-white mb-6">Quick Links</h3>
             <ul className="space-y-3">
-              <li>
+              <li className="hidden">
                 <Link 
                   href="/" 
                   className={`transition-colors ${

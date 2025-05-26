@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import MobileMenu from './mobile-menu';
 
 const navigation = [
-  { name: 'Home', href: '/' },
+  { name: 'Home', href: '/', className: 'hidden' },
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/services', className: 'hidden' },
   { name: 'Case Studies', href: '/case-studies', className: 'hidden' },
