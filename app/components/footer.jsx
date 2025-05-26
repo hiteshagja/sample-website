@@ -145,10 +145,8 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-semibold text-white mb-6">Contact Us</h3>
             <address className="not-italic">
-              <p className="mb-2">123 AI Street</p>
-              <p className="mb-2">Tech City, TC 12345</p>
-              <p className="mb-2">Email: info@aiagency.com</p>
-              <p>Phone: (123) 456-7890</p>
+              <p className="mb-2">Ahmedabad, Gujarat, India</p>
+              <p className="mb-2">Email: hello@codagni.com</p>
             </address>
           </div>
         </div>
@@ -157,7 +155,7 @@ export default function Footer() {
         <div className="mt-16 pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400">
-              © {new Date().getFullYear()} AI Agency. All rights reserved.
+              © {new Date().getFullYear()} Codagni. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link 

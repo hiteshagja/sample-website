@@ -6,7 +6,7 @@ import Footer from './components/footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'AI Agency - Transform Your Business with AI',
+  title: 'Codagni - Transform Your Business with AI',
   description: 'Leading AI solutions provider offering LLM, RAG, and MCP services to transform your business.',
 };
 
