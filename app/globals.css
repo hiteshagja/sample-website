@@ -15,7 +15,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
  
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 40% 98%;
  
     --secondary: 210 40% 96.1%;
@@ -32,7 +32,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 221.2 83.2% 53.3%;
  
     --radius: 0.5rem;
   }
@@ -47,7 +47,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
  
-    --primary: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
     --primary-foreground: 222.2 47.4% 11.2%;
  
     --secondary: 217.2 32.6% 17.5%;
@@ -64,7 +64,7 @@
  
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 224.3 76.3% 48%;
   }
 }
  
@@ -239,4 +239,74 @@ body {
 /* Add shimmer effect to connections */
 .neural-network svg {
   filter: drop-shadow(0 0 15px rgba(255, 103, 0, 0.3));
+}
+
+/* Prose styles */
+.prose {
+  color: #ebebeb;
+}
+
+.prose h2 {
+  color: #ff6700;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+
+.prose .lead {
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: #c0c0c0;
+  margin-bottom: 2rem;
+}
+
+.prose a {
+  color: #ff6700;
+  text-decoration: none;
+  border-bottom: 1px solid #ff6700;
+  transition: all 0.3s ease;
+}
+
+.prose a:hover {
+  color: #ebebeb;
+  border-bottom-color: #ebebeb;
+}
+
+.prose ul, .prose ol {
+  margin-bottom: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose blockquote {
+  border-left: 4px solid #ff6700;
+  padding-left: 1.5rem;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 1.5rem;
+  color: #c0c0c0;
+}
+
+.prose code {
+  background-color: #1a1a1a;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.prose pre {
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
 }

@@ -210,30 +210,21 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-[#ff6700] to-white">
+      <section className="py-24 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a] border-t border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-6">
-            Ready to Get Started?
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+            Ready to Transform Your Business with AI?
           </h2>
-          <p className="text-xl text-gray-800 mb-8 max-w-2xl mx-auto">
-            Contact our team to discuss how we can help you implement AI solutions for your organization.
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Let's discuss how AI can revolutionize your business operations. Schedule a free 1-hour consultation to explore custom AI solutions tailored to your needs.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Link href="/contact">
               <Button
-                className="bg-black text-white hover:bg-gray-900 transition-colors cursor-pointer"
+                className="bg-gradient-to-r from-[#ff6700] to-white text-black hover:opacity-90 transition-opacity font-bold"
                 size="lg"
               >
-                Inquire Now
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button
-                variant="outline"
-                className="border-black text-black hover:bg-black/10 cursor-pointer"
-                size="lg"
-              >
-                Contact Us
+                Schedule Free Consultation
               </Button>
             </Link>
           </div>
