@@ -130,10 +130,13 @@ export default function BlogPage() {
               >
                 <div className="relative h-64 mb-6 rounded-xl overflow-hidden">
                   <Image
-                    src={post.image}
+                    src={post.image || '/images/blog-placeholder.jpg'}
                     alt={post.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      e.currentTarget.src = '/images/blog-placeholder.jpg';
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-60" />
                 </div>

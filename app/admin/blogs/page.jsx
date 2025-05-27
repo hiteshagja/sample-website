@@ -102,7 +102,7 @@ export default function BlogManagementPage() {
             />
             <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
           </div>
-          <Link href="/admin/blog/add">
+          <Link href="/admin/blogs/add">
             <Button className="bg-[#ff6700] hover:bg-[#ff8533]">
               <FaPlus className="mr-2" />
               Add New Post
@@ -114,19 +114,19 @@ export default function BlogManagementPage() {
           <table className="w-full">
             <thead>
               <tr className="bg-gray-800">
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Title</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Author</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Date</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Tags</th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-300 uppercase tracking-wider">Actions</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider w-[30%]">Title</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider w-[15%]">Author</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider w-[15%]">Date</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider w-[25%]">Tags</th>
+                <th className="px-6 py-3 text-right text-xs font-medium text-gray-300 uppercase tracking-wider w-[15%]">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-800">
               {paginatedPosts.map((post) => (
                 <tr key={post.slug} className="hover:bg-gray-800/50">
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-white">{post.title}</div>
-                    <div className="text-sm text-gray-400">{post.excerpt}</div>
+                  <td className="px-6 py-4">
+                    <div className="text-sm font-medium text-white truncate max-w-[300px]">{post.title}</div>
+                    <div className="text-sm text-gray-400 truncate max-w-[300px]">{post.excerpt}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{post.author}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{post.date}</td>
@@ -144,7 +144,7 @@ export default function BlogManagementPage() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <div className="flex justify-end gap-2">
-                      <Link href={`/admin/blog/edit/${post.slug}`}>
+                      <Link href={`/admin/blogs/edit/${post.slug}`}>
                         <Button
                           variant="ghost"
                           size="sm"

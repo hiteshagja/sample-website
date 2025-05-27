@@ -6,10 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { use } from 'react';
+import { FaSpinner } from 'react-icons/fa';
 
 export default function EditBlogPostPage({ params }) {
-  const resolvedParams = use(params);
   const [post, setPost] = useState({
     title: '',
     excerpt: '',
@@ -19,7 +18,9 @@ export default function EditBlogPostPage({ params }) {
     image: '',
   });
   const [isLoading, setIsLoading] = useState(true);
+  const [uploadingImage, setUploadingImage] = useState(false);
   const [error, setError] = useState('');
+  const [imagePreview, setImagePreview] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -31,13 +32,21 @@ export default function EditBlogPostPage({ params }) {
 
     const loadPost = async () => {
       try {
-        const response = await fetch(`/api/blog-posts/${resolvedParams.slug}`);
+        const response = await fetch(`/api/blog-posts/${params.slug}`);
         if (!response.ok) throw new Error('Failed to load post');
         const data = await response.json();
-        setPost({
+        console.log('Loaded post data:', data);
+        
+        // Ensure content is properly set
+        const postData = {
           ...data,
-          tags: data.tags.join(', '),
-        });
+          content: data.content || '', // Ensure content is never undefined
+          tags: Array.isArray(data.tags) ? data.tags.join(', ') : data.tags,
+          image: data.image || '' // Ensure image is never undefined
+        };
+        console.log('Setting post state:', postData);
+        setPost(postData);
+        setImagePreview(data.image || null);
       } catch (error) {
         console.error('Error loading post:', error);
         setError('Failed to load post');
@@ -47,14 +56,54 @@ export default function EditBlogPostPage({ params }) {
     };
 
     loadPost();
-  }, [resolvedParams.slug, router]);
+  }, [params.slug, router]);
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Create preview URL
+    const previewUrl = URL.createObjectURL(file);
+    setImagePreview(previewUrl);
+
+    try {
+      setUploadingImage(true);
+      setError('');
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to upload image');
+      }
+
+      console.log('Image uploaded successfully:', data);
+      setPost(prev => ({
+        ...prev,
+        image: data.url
+      }));
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      setError(error.message || 'Failed to upload image');
+      // Revert preview on error
+      setImagePreview(post.image);
+    } finally {
+      setUploadingImage(false);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
     try {
-      const response = await fetch(`/api/blog-posts/${resolvedParams.slug}`, {
+      const response = await fetch(`/api/blog-posts/${params.slug}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +116,7 @@ export default function EditBlogPostPage({ params }) {
 
       if (!response.ok) throw new Error('Failed to update post');
 
-      router.push('/admin/blog');
+      router.push('/admin/blogs');
     } catch (error) {
       console.error('Error updating post:', error);
       setError('Failed to update post');
@@ -157,14 +206,31 @@ export default function EditBlogPostPage({ params }) {
           </div>
 
           <div>
-            <Label htmlFor="image">Image URL</Label>
-            <Input
-              id="image"
-              value={post.image}
-              onChange={(e) => setPost({ ...post, image: e.target.value })}
-              className="mt-2 bg-gray-900 border-gray-800 text-white"
-              required
-            />
+            <Label htmlFor="image">Featured Image</Label>
+            <div className="mt-2 flex items-center gap-4">
+              <Input
+                id="image"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                onChange={handleImageUpload}
+                className="bg-gray-900 border-gray-800 text-white"
+              />
+              {uploadingImage && (
+                <FaSpinner className="animate-spin text-[#ff6700]" />
+              )}
+            </div>
+            {imagePreview && (
+              <div className="mt-2">
+                <img
+                  src={imagePreview}
+                  alt="Preview"
+                  className="h-32 w-32 object-cover rounded-lg"
+                />
+                <p className="text-sm text-gray-400 mt-1">
+                  {uploadingImage ? 'Uploading...' : 'Image preview'}
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="flex gap-4">
@@ -178,7 +244,7 @@ export default function EditBlogPostPage({ params }) {
               type="button"
               variant="outline"
               className="border-gray-800 text-gray-300"
-              onClick={() => router.push('/admin/blog')}
+              onClick={() => router.push('/admin/blogs')}
             >
               Cancel
             </Button>

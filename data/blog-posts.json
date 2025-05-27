@@ -6,55 +6,39 @@
       "excerpt": "Explore the most significant AI trends that will shape 2024 and beyond, from generative AI to ethical considerations.",
       "date": "2024-03-15",
       "author": "John Doe",
-      "tags": ["AI Trends", "Technology", "Innovation"],
+      "tags": [
+        "AI Trends",
+        "Technology",
+        "Innovation"
+      ],
       "readTime": "5 min read",
       "image": "/blog/ai-trends.jpg"
     },
     {
-      "slug": "machine-learning-business",
-      "title": "Machine Learning in Business: A Practical Guide",
-      "excerpt": "A comprehensive guide to implementing machine learning in your business operations and strategy.",
-      "date": "2024-03-10",
-      "author": "Jane Smith",
-      "tags": ["Machine Learning", "Business", "AI"],
-      "readTime": "7 min read",
-      "image": "/blog/ml-business.jpg"
-    },
-    {
-      "slug": "ai-ethics",
-      "title": "The Ethics of AI: Balancing Innovation and Responsibility",
-      "excerpt": "Understanding the ethical implications of AI development and implementation in modern business.",
-      "date": "2024-03-05",
-      "author": "Alex Johnson",
-      "tags": ["AI Ethics", "Responsibility", "Technology"],
-      "readTime": "6 min read",
-      "image": "/blog/ai-ethics.jpg"
-    },
-    {
-      "title": "blog 1",
-      "excerpt": "blog 1 excerpt",
-      "content": "this is test blog content. please show it carefully.",
-      "author": "Hitesh",
+      "slug": "test-2705-1450",
+      "title": "test 2705 1450",
+      "excerpt": "ex test 2705 1450",
+      "author": "heena",
+      "date": "2025-05-27",
       "tags": [
-        "slug 1",
-        "slug 2"
+        "twisha",
+        "mivaan"
       ],
-      "image": "https://cdn-front.freepik.com/images/ai/image-generator/advantages/image-generator-freepik-6.webp?w=750&h=1920&q=75",
-      "slug": "blog-1",
-      "date": "2025-04-26"
+      "readTime": "5 min read",
+      "image": "/uploads/1748340179937-472546088-forest-9504070_960_720.jpg"
     },
     {
-      "title": "Blog 2",
-      "excerpt": "blog 2 exppppp",
-      "content": "this sis dfsldif sdflsjflsdfj sdflk sfdjls fjls f\n\nsdf\nsdf\nsdf\nsd\nfs\ndf\ns\n\n\nsdf\nsdf\ns",
-      "author": "Heena",
+      "slug": "test-2705-1533",
+      "title": "test 2705 1533",
+      "excerpt": "exp test 2705 1533",
+      "author": "test_2705",
+      "date": "2025-05-27",
       "tags": [
-        "test",
-        "tst"
+        "twisha",
+        "mivaan"
       ],
-      "image": "https://cdn-front.freepik.com/images/ai/image-generator/advantages/image-generator-freepik-6.webp?w=750&h=1920&q=75",
-      "slug": "blog-2",
-      "date": "2025-04-26"
+      "readTime": "5 min read",
+      "image": "/uploads/1748340353971-502739141-flower-5142952_1280.jpg"
     }
   ]
 }

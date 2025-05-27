@@ -20,7 +20,7 @@ export default function AdminLoginPage() {
     if (email === 'admin@example.com' && password === 'admin123') {
       // Store authentication state
       localStorage.setItem('adminAuthenticated', 'true');
-      router.push('/admin/blog/add');
+      router.push('/admin/blogs');
     } else {
       setError('Invalid credentials');
     }
